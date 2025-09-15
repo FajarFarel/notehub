@@ -14,19 +14,23 @@ class WebTema extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<WebTemaController>();
 
+    // load halaman web dengan param noteId & userName ketika halaman di-build
     controller.loadPage(noteId, authController.user.value!.nama.toString());
 
     return Scaffold(
       appBar: AppBar(
+        // tombol back
         leading: IconButton(
           icon: Icon(Icons.close_rounded),
           onPressed: () => Get.back(),
         ),
+        // tampilkan url
         title: SelectableText(
           '${Config.url_web}note_id=$noteId&user_name=${authController.user.value!.nama}',
           style: TextStyle(fontSize: 12),
           maxLines: 1,
         ),
+        // tombol refresh
         actions: [
           IconButton(
             icon: Icon(Icons.refresh_rounded),
@@ -37,6 +41,7 @@ class WebTema extends StatelessWidget {
           )
         ],
       ),
+      // web view
       body: WebViewWidget(controller: controller.webViewController),
     );
   }
