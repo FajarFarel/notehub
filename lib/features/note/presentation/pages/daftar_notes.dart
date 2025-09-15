@@ -190,7 +190,7 @@ class _DaftarNotesState extends State<DaftarNotes> {
                       tanggal: formatTanggal(note.tanggal),
                       getKategoriColor: getKategoriColor,
                       onTap: () {
-                        Get.to(NotePribadi(note: note));
+                        Get.off(NotePribadi(note: note));
                       },
                     );
                   },
